@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>CGPA Result</title>
+</head>
+<body>
+    <h1>Your CGPA</h1>
+    {% if arrear %}
+        <p>You have an arrear in one or more subjects, so the CGPA cannot be calculated.</p>
+    {% else %}
+        <p>Your CGPA is: {{ cgpa }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Semester Grades</title>
+</head>
+<body>
+    <h1>Enter your Grades</h1>
+    <form action="/result" method="post">
+        {% for sem in range(1, semesters + 1) %}
+            <h2>Semester {{ sem }}</h2>
+            {% for subject, credit in subjects[sem].items() %}
+                <label for="grade{{ sem }}_{{ loop.index }}">{{ subject }} ({{ credit }} credits):</label>
+                <select id="grade{{ sem }}_{{ loop.index }}" name="grades{{ sem }}[]">
+                    <option value="O">O</option>
+                    <option value="A+">A+</option>
+                    <option value="A">A</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="arrear">Arrear</option>
+                </select><br>
+            {% endfor %}
+        {% endfor %}
+        <input type="submit" value="Calculate CGPA">
+    </form>
+</body>
+</html>
